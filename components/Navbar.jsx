@@ -56,7 +56,7 @@ const Navbar = () => {
 
                 <li className=" hvr-underline-from-center flex items-center gap-1 cursor-pointer ">
                   <AiOutlineProduct className="transition-all ease-in-out duration-300 hover:text-xl" />
-                  Products
+                  Shop
                 </li>
 
                 <li className=" hvr-underline-from-center flex items-center gap-1 cursor-pointer ">
@@ -73,7 +73,7 @@ const Navbar = () => {
               {/* search icon */}
               <div className="flex items-center gap-2">
                 {/* search bar */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 border-1 border-gray-500 rounded px-3 py-1">
                   <label>
                     <CiSearch />
                   </label>

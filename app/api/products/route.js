@@ -5,10 +5,10 @@ export async function GET(request) {
   const SHOPIFY_STORE_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
   const SHOPIFY_STOREFRONT_ACCESS_TOKEN = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
-  console.log('Environment check:', {
-    domain: SHOPIFY_STORE_DOMAIN ? 'Set' : 'Missing',
-    token: SHOPIFY_STOREFRONT_ACCESS_TOKEN ? 'Set' : 'Missing'
-  });
+  // console.log('Environment check:', {
+  //   domain: SHOPIFY_STORE_DOMAIN ? 'Set' : 'Missing',
+  //   token: SHOPIFY_STOREFRONT_ACCESS_TOKEN ? 'Set' : 'Missing'
+  // });
 
   if (!SHOPIFY_STORE_DOMAIN || !SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
     return new Response(
@@ -56,7 +56,7 @@ export async function GET(request) {
   `;
 
   try {
-    console.log('Making request to:', url);
+    // console.log('Making request to:', url);
     
     const response = await axios.post(
       url,
@@ -70,8 +70,8 @@ export async function GET(request) {
       }
     );
 
-    console.log('Shopify response status:', response.status);
-    console.log('Shopify response data:', JSON.stringify(response.data, null, 2));
+    // console.log('Shopify response status:', response.status);
+    // console.log('Shopify response data:', JSON.stringify(response.data, null, 2));
 
     // Check if there are GraphQL errors
     if (response.data.errors) {
