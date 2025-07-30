@@ -18,7 +18,7 @@ const Hero1 = () => {
 
           {/* Drop the ordinary */}
           <div className="flex flex-col py-12 lg:pt-[10rem] text-white items-center justify-center">
-            <h1 className="font-black text-6xl">Drop the Ordinary</h1>
+            <h1 className="font-black text-6xl glitch" data-text="Drop the Ordinary">Drop the Ordinary</h1>
             <p className="text- font-semibold pt-2">
               Welcome to Drop Thread, the ultimate destination for fashion
               enthusiasts and trendstters.

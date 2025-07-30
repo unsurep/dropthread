@@ -26,6 +26,14 @@ const Hero3 = () => {
             Trending Now
           </h1>
 
+
+
+
+
+
+
+          
+
             {/* swiper js */}
            <div>
                 <Swiper
@@ -45,42 +53,42 @@ const Hero3 = () => {
              navigation={true}
              modules={[Autoplay, Navigation]}
           
-            className="mySwiper">
+            className="mySwiper rounded-xl">
 
-            <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+            <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-            <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+            <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl '/>
             </SwiperSlide>
 
-             <SwiperSlide>
-                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full '/>
+             <SwiperSlide className='rounded-xl'>
+                <Image src='/tee.png' width={100} height={100} alt='image' className='w-full rounded-xl'/>
             </SwiperSlide>
 
                 </Swiper>
