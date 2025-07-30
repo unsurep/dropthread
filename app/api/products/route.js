@@ -2,13 +2,8 @@
 import axios from 'axios';
 
 export async function GET(request) {
-  const SHOPIFY_STORE_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
-  const SHOPIFY_STOREFRONT_ACCESS_TOKEN = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
-
-  // console.log('Environment check:', {
-  //   domain: SHOPIFY_STORE_DOMAIN ? 'Set' : 'Missing',
-  //   token: SHOPIFY_STOREFRONT_ACCESS_TOKEN ? 'Set' : 'Missing'
-  // });
+  const SHOPIFY_STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
+  const SHOPIFY_STOREFRONT_ACCESS_TOKEN = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
   if (!SHOPIFY_STORE_DOMAIN || !SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
     return new Response(
@@ -20,7 +15,7 @@ export async function GET(request) {
     );
   }
 
-  const url = `https://${SHOPIFY_STORE_DOMAIN}/api/2023-10/graphql.json`;
+  const url = `https://${SHOPIFY_STORE_DOMAIN}/api/2024-01/graphql.json`;
 
   const query = `
     {
@@ -42,6 +37,7 @@ export async function GET(request) {
             variants(first: 1) {
               edges {
                 node {
+                  id
                   price {
                     amount
                     currencyCode
@@ -56,7 +52,10 @@ export async function GET(request) {
   `;
 
   try {
-    // console.log('Making request to:', url);
+    console.log('Making request to Shopify:', {
+      domain: SHOPIFY_STORE_DOMAIN,
+      hasToken: !!SHOPIFY_STOREFRONT_ACCESS_TOKEN
+    });
     
     const response = await axios.post(
       url,
@@ -70,10 +69,6 @@ export async function GET(request) {
       }
     );
 
-    // console.log('Shopify response status:', response.status);
-    // console.log('Shopify response data:', JSON.stringify(response.data, null, 2));
-
-    // Check if there are GraphQL errors
     if (response.data.errors) {
       console.error('GraphQL errors:', response.data.errors);
       return new Response(
@@ -85,7 +80,6 @@ export async function GET(request) {
       );
     }
 
-    // Return the response data directly
     return new Response(JSON.stringify(response.data), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
@@ -105,7 +99,6 @@ export async function GET(request) {
         ? JSON.stringify(error.response.data)
         : error.response.statusText;
       
-      // Handle specific HTTP errors
       if (error.response.status === 401) {
         errorMsg = 'Invalid Shopify access token';
       } else if (error.response.status === 404) {
