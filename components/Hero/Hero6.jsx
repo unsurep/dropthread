@@ -10,8 +10,8 @@ const Hero6 = () => {
         <h1 className="text-center text-3xl font-bold tracking-[5px] py-12">Frequently Asked Questions</h1>
         {/* questions */}
 
-        <div className="flex justify-between gap-5">
-          <div >
+        <div className="flex flex-col lg:flex-row justify-between gap-10">
+          <div className="w-full lg:w-1/2">
 
             <div className="collapse collapse-plus bg-base-100 border border-base-300">
               <input type="radio" name="my-accordion-3" defaultChecked />
@@ -101,8 +101,8 @@ const Hero6 = () => {
 
           </div>
 
-          <div className="flex  flex-col items-center justify-center mx-auto">
-            <Image src="/logo.png" width={250} height={250} alt="image" className="w-full"/>
+          <div className="w-full lg:w-1/2 flex flex-col items-center justify-center mx-auto">
+            <Image src="/logo.png" width={250} height={250} alt="image" className="w-auto"/>
             <p className="font-black text-2xl">DropThreads</p>
           </div>
         </div>

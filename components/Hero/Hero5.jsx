@@ -70,11 +70,11 @@ const Hero5 = () => {
                 <div
                   key={testimonial.id}
                   className={`
-              p-6 rounded-lg transition-all duration-300 ease-in-out cursor-pointer
+              p-6 rounded-lg transition-all duration-300 ease-in-out cursor-pointer hover:scale-105 hover:shadow-lg
               ${
                 testimonial.bgColor === "white"
-                  ? "bg-white hover:bg-gray-100 shadow-sm border border-gray-200"
-                  : "bg-gray-200 hover:bg-white shadow-sm"
+                  ? "bg-white shadow-sm border border-gray-200"
+                  : "bg-gray-200 shadow-sm"
               }
             `}
                 >

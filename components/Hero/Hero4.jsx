@@ -125,7 +125,7 @@ export default function Hero4() {
 
   if (loading) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
+      <div className="p-5 text-center">
         <div>Loading Shopify products...</div>
       </div>
     );
@@ -133,13 +133,11 @@ export default function Hero4() {
 
   if (apiError) {
     return (
-      <div style={{ padding: '20px', color: 'red', textAlign: 'center' }}>
-        <h3>Error loading products:</h3>
+      <div className="p-5 text-red-600 text-center">
+        <h3 className="text-lg font-bold">Error loading products:</h3>
         <p>{apiError}</p>
-        <div style={{ marginTop: '20px', fontSize: '14px', color: '#666' }}>
-          <p>Debug Information:</p>
-          <p>Domain configured: {SHOPIFY_DOMAIN ? 'Yes' : 'No'}</p>
-          <p>Token configured: {SHOPIFY_TOKEN ? 'Yes' : 'No'}</p>
+        <div className="mt-5 text-sm text-gray-500">
+          <h1 className='text-red-600 text-4xl font-black'>Error</h1>
         </div>
       </div>
     );
@@ -147,19 +145,14 @@ export default function Hero4() {
 
   if (products.length === 0) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <h1>Shopify Products</h1>
-        <div style={{ 
-          backgroundColor: '#f0f8ff', 
-          padding: '20px', 
-          borderRadius: '8px',
-          margin: '20px 0'
-        }}>
-          <h3>✅ Connection Successful!</h3>
+      <div className="p-5 text-center">
+        <h1 className="text-2xl font-bold">Shopify Products</h1>
+        <div className="bg-blue-100 p-5 rounded-lg my-5">
+          <h3 className="text-lg font-bold">✅ Connection Successful!</h3>
           <p>Your Shopify store is connected, but no products were found.</p>
-          <div style={{ marginTop: '20px', textAlign: 'left', maxWidth: '600px', margin: '20px auto' }}>
-            <h4>To see products here:</h4>
-            <ol>
+          <div className="mt-5 text-left max-w-md mx-auto">
+            <h4 className="font-bold">To see products here:</h4>
+            <ol className="list-decimal list-inside">
               <li>Go to your Shopify admin dashboard</li>
               <li>Navigate to <strong>Products</strong></li>
               <li>Click <strong>Add product</strong></li>
@@ -175,11 +168,11 @@ export default function Hero4() {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 className='text-4xl font-black' style={{ textAlign: 'center', marginBottom: '30px' }}>
+    <div className="p-5">
+      <h1 className='text-4xl font-black text-center mb-8'>
         Shopify Products
       </h1>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '10px' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map(({ node }) => {
           const priceObj = node.variants?.edges?.[0]?.node?.price;
           const imageUrl = node.images?.edges?.[0]?.node?.url;
@@ -191,44 +184,23 @@ export default function Hero4() {
           console.log('Product:', node.title, 'Variant ID:', variantId);
           
           return (
-            <div key={node.id} style={{
-              border: '1px solid #ddd',
-              borderRadius: '8px',
-              padding: '16px',
-              backgroundColor: '#f9f9f9'
-            }}>
-              <h2 style={{ marginTop: 0, marginBottom: '10px' }}>{node.title}</h2>
+            <div key={node.id} className="border border-gray-300 rounded-lg p-4 bg-gray-50">
+              <h2 className="mt-0 mb-2 font-bold text-lg">{node.title}</h2>
               
               {imageUrl && (
                 <img
                   src={imageUrl}
                   alt={altText}
-                  style={{
-                    width: '100%',
-                    height: '200px',
-                    objectFit: 'cover',
-                    borderRadius: '4px',
-                    marginBottom: '10px'
-                  }}
+                  className="w-full h-48 object-cover rounded mb-2"
                 />
               )}
               
-              <p style={{
-                marginBottom: '10px',
-                color: '#666',
-                fontSize: '14px',
-                lineHeight: '1.4'
-              }}>
+              <p className="mb-2 text-gray-600 text-sm leading-snug">
                 {node.description || 'No description available'}
               </p>
               
               {priceObj && (
-                <p style={{
-                  fontWeight: 'bold',
-                  fontSize: '18px',
-                  color: '#333',
-                  marginBottom: '10px'
-                }}>
+                <p className="font-bold text-lg text-gray-800 mb-2">
                   Price: {priceObj.amount} {priceObj.currencyCode}
                 </p>
               )}
@@ -236,20 +208,7 @@ export default function Hero4() {
               <button
                 onClick={() => handleBuyNow(node.id, variantId)}
                 disabled={isLoading}
-                style={{
-                  backgroundColor: isLoading ? '#cccccc' : '#008060',
-                  color: 'white',
-                  padding: '10px 20px',
-                  borderRadius: '4px',
-                  border: 'none',
-                  cursor: isLoading ? 'not-allowed' : 'pointer',
-                  width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
-                }}
-              >
+                className={`w-full flex items-center justify-center gap-2 px-4 py-2 text-white rounded border-none ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-700 cursor-pointer'}`}>
                 {isLoading ? 'Processing...' : 'Buy Now'}
               </button>
             </div>

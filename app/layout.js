@@ -1,16 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from "@/app/context/ThemeContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const metadata = {
@@ -20,12 +17,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="light">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en">
+      <body className={`${outfit.variable} antialiased`}>
+        <ThemeProvider>
+          <Toaster position="top-center" />
           <Navbar/>
-        {children}
-        <Footer/>
+          {children}
+          <Footer/>
+        </ThemeProvider>
       </body>
     </html>
   );
